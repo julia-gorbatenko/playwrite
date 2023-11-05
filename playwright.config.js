@@ -16,7 +16,7 @@ const config =  defineConfig({
   globalTeardown: './globalTeardown',
   timeout: 40000,
   outputDir: 'test-results',
-  grep: /@ui/,
+  // grep: /@ui/,
   /* Run tests in files in parallel */
   fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -40,6 +40,9 @@ const config =  defineConfig({
       height: 720
     },
     trace: 'on-first-retry',
+    // launchOptions:{
+    //   slowMo: 1000
+    // }
   },
 
   /* Configure projects for major browsers */
