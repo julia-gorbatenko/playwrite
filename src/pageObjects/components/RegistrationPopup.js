@@ -11,7 +11,7 @@ export default class RegistrationPopup extends BaseComponent {
         this.passwordInput = this._container.locator(`input#signupPassword`)
         this.repeatPasswordInput = this._container.locator('input#signupRepeatPassword')
         this.registerButton = this._container.locator('button.btn.btn-primary')
-        this.invalidNameErrorMessage = this._container.locator('div.invalid-feedback')
+        this.ErrorMessage = this._container.locator('div.invalid-feedback')
         this.modalHeader = this._container.locator('div.modal-header')
     }
     async registerUser(name, lastName, email, password, repeatPassword){
@@ -22,52 +22,57 @@ export default class RegistrationPopup extends BaseComponent {
         await this.repeatPasswordInput.fill(repeatPassword)
         await this.registerButton.click()
     }
-    async displayErrorForInvalidName (name,errorMessage){
+
+    async fillName (name) {
         await this.nameInput.fill(name)
-        await this.modalHeader.click()
-        await expect (this.invalidNameErrorMessage).toHaveText(errorMessage)
+        await this.nameInput.blur()
+    }
+
+    async checkErrorForInvalidName (errorMessage){
+        await expect (this.ErrorMessage).toHaveText(errorMessage)
         await expect (this.nameInput).toHaveCSS('border-color', 'rgb(220, 53, 69)')
         await expect (this.registerButton).toBeDisabled()
     }
-
-    async displayErrorForInvalidLastName (lastName,errorMessage){
+    async fillLastName (lastName) {
         await this.lastNameInput.fill(lastName)
-        await this.modalHeader.click()
-        await expect (this.invalidNameErrorMessage).toHaveText(errorMessage)
+        await this.lastNameInput.blur()
+    }
+
+    async checkErrorForInvalidLastName (errorMessage){
+        await expect (this.ErrorMessage).toHaveText(errorMessage)
         await expect (this.lastNameInput).toHaveCSS('border-color', 'rgb(220, 53, 69)')
         await expect (this.registerButton).toBeDisabled()
     }
 
-    async displayErrorForInvalidEmail (email,errorMessage){
+    async fillEmail (email) {
         await this.emailInput.fill(email)
-        await this.modalHeader.click()
-        await expect (this.invalidNameErrorMessage).toHaveText(errorMessage)
+        await this.emailInput.blur()
+    }
+
+    async checkErrorForInvalidEmail (errorMessage){
+        await expect (this.ErrorMessage).toHaveText(errorMessage)
         await expect (this.emailInput).toHaveCSS('border-color', 'rgb(220, 53, 69)')
         await expect (this.registerButton).toBeDisabled()
     }
-    async displayErrorForInvalidPassword (password,errorMessage){
-        await this.passwordInput.clear()
+
+    async fillPassword (password) {
         await this.passwordInput.fill(password)
-        await this.modalHeader.click()
-        await expect (this.invalidNameErrorMessage).toHaveText(errorMessage)
+        await this.passwordInput.blur()
+    }
+
+    async checkErrorForInvalidPassword (errorMessage){
+        await expect (this.ErrorMessage).toHaveText(errorMessage)
         await expect (this.passwordInput).toHaveCSS('border-color', 'rgb(220, 53, 69)')
         await expect (this.registerButton).toBeDisabled()
     }
-    async displayErrorForInvalidRepeatPassword (repeatPassword,errorMessage){
-        await this.repeatPasswordInput.clear()
+
+    async fillRepeatPassword (repeatPassword) {
         await this.repeatPasswordInput.fill(repeatPassword)
-        await this.modalHeader.click()
-        await expect (this.invalidNameErrorMessage).toHaveText(errorMessage)
-        await expect (this.repeatPasswordInput).toHaveCSS('border-color', 'rgb(220, 53, 69)')
-        await expect (this.registerButton).toBeDisabled()
+        await this.repeatPasswordInput.blur()
     }
-    async displayErrorForNotMatchingPassword (password, repeatPassword,errorMessage){
-        await this.passwordInput.clear()
-        await this.passwordInput.fill(password)
-        await this.repeatPasswordInput.clear()
-        await this.repeatPasswordInput.fill(repeatPassword)
-        await this.modalHeader.click()
-        await expect (this.invalidNameErrorMessage).toHaveText(errorMessage)
+
+    async checkErrorForInvalidRepeatPassword(errorMessage){
+        await expect (this.ErrorMessage).toHaveText(errorMessage)
         await expect (this.repeatPasswordInput).toHaveCSS('border-color', 'rgb(220, 53, 69)')
         await expect (this.registerButton).toBeDisabled()
     }
