@@ -1,15 +1,16 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test'
+import {config as testConfig} from "./config/config"
 
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// require('dotenv').config();
 
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
+
 const config =  defineConfig({
   testMatch: 'tests/**/*.spec.js',
   globalSetup: './globalSetup',
@@ -31,18 +32,18 @@ const config =  defineConfig({
   use: {
     headless: false,
     httpCredentials: {
-      username: "guest",
-      password: "welcome2qauto"
+      username: testConfig.username,
+      password: testConfig.password
     },
-    baseURL: 'https://qauto.forstudy.space/',
+    baseURL: testConfig.baseURL,
     viewport: {
       width: 1280,
       height: 720
     },
     trace: 'on-first-retry',
-    // launchOptions:{
-    //   slowMo: 1000
-    // }
+    launchOptions:{
+      slowMo: 1000
+    }
   },
 
   /* Configure projects for major browsers */
