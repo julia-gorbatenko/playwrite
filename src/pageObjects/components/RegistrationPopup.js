@@ -11,7 +11,7 @@ export default class RegistrationPopup extends BaseComponent {
         this.passwordInput = this._container.locator(`input#signupPassword`)
         this.repeatPasswordInput = this._container.locator('input#signupRepeatPassword')
         this.registerButton = this._container.locator('button.btn.btn-primary')
-        this.ErrorMessage = this._container.locator('div.invalid-feedback')
+        this.еrrorMessage = this._container.locator('div.invalid-feedback')
         this.modalHeader = this._container.locator('div.modal-header')
     }
     async registerUser(name, lastName, email, password, repeatPassword){
@@ -29,7 +29,7 @@ export default class RegistrationPopup extends BaseComponent {
     }
 
     async checkErrorForInvalidName (errorMessage){
-        await expect (this.ErrorMessage).toHaveText(errorMessage)
+        await expect (this.еrrorMessage).toHaveText(errorMessage)
         await expect (this.nameInput).toHaveCSS('border-color', 'rgb(220, 53, 69)')
         await expect (this.registerButton).toBeDisabled()
     }
@@ -39,7 +39,7 @@ export default class RegistrationPopup extends BaseComponent {
     }
 
     async checkErrorForInvalidLastName (errorMessage){
-        await expect (this.ErrorMessage).toHaveText(errorMessage)
+        await expect (this.еrrorMessage).toHaveText(errorMessage)
         await expect (this.lastNameInput).toHaveCSS('border-color', 'rgb(220, 53, 69)')
         await expect (this.registerButton).toBeDisabled()
     }
@@ -50,7 +50,7 @@ export default class RegistrationPopup extends BaseComponent {
     }
 
     async checkErrorForInvalidEmail (errorMessage){
-        await expect (this.ErrorMessage).toHaveText(errorMessage)
+        await expect (this.еrrorMessage).toHaveText(errorMessage)
         await expect (this.emailInput).toHaveCSS('border-color', 'rgb(220, 53, 69)')
         await expect (this.registerButton).toBeDisabled()
     }
@@ -61,7 +61,7 @@ export default class RegistrationPopup extends BaseComponent {
     }
 
     async checkErrorForInvalidPassword (errorMessage){
-        await expect (this.ErrorMessage).toHaveText(errorMessage)
+        await expect (this.еrrorMessage).toHaveText(errorMessage)
         await expect (this.passwordInput).toHaveCSS('border-color', 'rgb(220, 53, 69)')
         await expect (this.registerButton).toBeDisabled()
     }
@@ -72,7 +72,7 @@ export default class RegistrationPopup extends BaseComponent {
     }
 
     async checkErrorForInvalidRepeatPassword(errorMessage){
-        await expect (this.ErrorMessage).toHaveText(errorMessage)
+        await expect (this.еrrorMessage).toHaveText(errorMessage)
         await expect (this.repeatPasswordInput).toHaveCSS('border-color', 'rgb(220, 53, 69)')
         await expect (this.registerButton).toBeDisabled()
     }
