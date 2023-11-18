@@ -12,8 +12,8 @@ const invalidEmail = 'test!@$gmail.com'
 const invalidPassword = 'Testpass'
 const invalidRepeatPassword = 'Passw0rd!'
 
-test.describe('Registration', ()=>{
-    test('Registration with valid data', async({page})=>{
+test.describe('Registration @S9168b118', ()=>{
+    test('Registration with valid data @T770e73a4', async({page})=>{
         await page.goto('/')
         const signUpButton = page.locator('button.hero-descriptor_btn.btn-primary')
         await expect(signUpButton, "Sign up button should be visible").toBeVisible()
@@ -40,7 +40,7 @@ test.describe('Registration', ()=>{
         await registerButton.click()
         await expect(page).toHaveURL('https://qauto.forstudy.space/panel/garage')
     })
-    test('Registration with invalid name', async({page})=>{
+    test('Registration with invalid name @T4b657981', async({page})=>{
         await page.goto('/')
         const signUpButton = page.locator('button.hero-descriptor_btn.btn-primary')
         await expect(signUpButton, "Sign up button should be visible").toBeVisible()
@@ -81,7 +81,7 @@ test.describe('Registration', ()=>{
         await expect(nameInput, "Name input should have red border when user has entered name more than 20 symbols").toHaveCSS('border-color', 'rgb(220, 53, 69)')
         await expect(registerButton, "Register button should be disabled when user has entered name more than 20 symbols").toBeDisabled()
     })
-    test('Registration with invalid last name', async({page})=>{
+    test('Registration with invalid last name @T54223752', async({page})=>{
         await page.goto('/')
         const signUpButton = page.locator('button.hero-descriptor_btn.btn-primary')
         await expect(signUpButton, "Sign up button should be visible").toBeVisible()
@@ -123,7 +123,7 @@ test.describe('Registration', ()=>{
         await expect(registerButton, "Register button should be disabled when user has entered last name more than 20 symbols").toBeDisabled()
     })
 
-    test('Registration with invalid email', async({page})=>{
+    test('Registration with invalid email @Ta47a73c0', async({page})=>{
         await page.goto('/')
         const signUpButton = page.locator('button.hero-descriptor_btn.btn-primary')
         await expect(signUpButton, "Sign up button should be visible").toBeVisible()
@@ -151,7 +151,7 @@ test.describe('Registration', ()=>{
         await expect(registerButton, "Register button should be disabled when user hasn't filled email").toBeDisabled()
     })
 
-    test('Registration with invalid password', async({page})=>{
+    test('Registration with invalid password @T0060c898', async({page})=>{
         await page.goto('/')
         const signUpButton = page.locator('button.hero-descriptor_btn.btn-primary')
         await expect(signUpButton, "Sign up button should be visible").toBeVisible()
@@ -178,7 +178,7 @@ test.describe('Registration', ()=>{
         await expect(passwordInput, "Password input should have red border when user hasn't filled filled").toHaveCSS('border-color', 'rgb(220, 53, 69)')
         await expect(registerButton, "Register button should be disabled when user hasn't filled filled").toBeDisabled()
     })
-    test('Registration with invalid re-enter password', async({page})=>{
+    test('Registration with invalid re-enter password @Td8867f14', async({page})=>{
         await page.goto('/')
         const signUpButton = page.locator('button.hero-descriptor_btn.btn-primary')
         await expect(signUpButton, "Sign up button should be visible").toBeVisible()

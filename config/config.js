@@ -4,5 +4,10 @@ dotenv.config()
 export const config = {
     baseURL: process.env.BASE_URL ?? "http://localhost",
     username: process.env.HTTP_CREDENTIALS_USERNAME,
-    password: process.env.HTTP_CREDENTIALS_PASSWORD
+    password: process.env.HTTP_CREDENTIALS_PASSWORD,
+    reporters: {
+        testomat: {
+            key:process.env.TESTOMAT_KEY
+        }
+    }
 }
