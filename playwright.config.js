@@ -27,14 +27,15 @@ const config =  defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [
-      ['dot'],
-    ['./node_modules/@testomatio/reporter/lib/adapter/playwright.js',
-      {
-    apiKey: testConfig.reporters.testomat.key,
-       },
-      ],
-],
+//   reporter: [
+//       ['dot'],
+//     ['./node_modules/@testomatio/reporter/lib/adapter/playwright.js',
+//       {
+//     apiKey: testConfig.reporters.testomat.key,
+//        },
+//       ],
+// ],
+  reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     headless: true,
@@ -62,17 +63,18 @@ const config =  defineConfig({
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
+      dependencies: ['setup']
     },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+    // {
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'] },
+    // },
+    //
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'] },
+    // },
 
     /* Test against mobile viewports. */
     // {
