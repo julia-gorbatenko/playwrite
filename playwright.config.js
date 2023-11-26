@@ -1,6 +1,6 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test'
-import {config as testConfig} from "./config/config"
+import {config as testConfig} from "./config/config.js"
 
 /**
  * Read environment variables from file.
@@ -38,7 +38,7 @@ const config =  defineConfig({
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    headless: true,
+    headless: false,
     httpCredentials: {
       username: testConfig.username,
       password: testConfig.password
