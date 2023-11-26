@@ -1,6 +1,6 @@
 import {expect, test} from "@playwright/test";
 import { faker } from '@faker-js/faker';
-import WelcomePage from "../../src/pageObjects/welcomePage/WelcomePage.js";
+import WelcomePage from "../../../src/pageObjects/welcomePage/WelcomePage.js";
 
 test.describe("Registration @S9168b118", ()=>{
     let page
