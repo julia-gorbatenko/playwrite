@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 export const config = {
     baseURL: process.env.BASE_URL ?? "http://localhost",
+    apiURL: process.env.API_URL ?? "http://localhost",
     username: process.env.HTTP_CREDENTIALS_USERNAME,
     password: process.env.HTTP_CREDENTIALS_PASSWORD,
     reporters: {
