@@ -8,6 +8,7 @@ import APIClient from "../../../src/client/APIClient.js";
 test.describe("POST cars", ()=>{
     let client
     let carId
+    const carsIdsToDelete = []
 
     test.beforeAll(async ()=>{
         client = await APIClient.authenticate(undefined, {
@@ -30,7 +31,7 @@ test.describe("POST cars", ()=>{
         expect(response.status, "Status code should be 201").toEqual(201)
         expect(response.data.status, "Success response should be returned").toBe("ok")
         expect(response.data.data, "Car should be created with data from request").toMatchObject(requestBody)
-        await client.cars.deleteCar(carId)
+        carsIdsToDelete.push(carId)
     })
 
     test('Should return error message for car with invalid carModelId', async ({})=>{
@@ -47,4 +48,9 @@ test.describe("POST cars", ()=>{
         expect(response.data.message, "Error message for car with invalid carModelId should be returned").toEqual('Model not found')
     })
 
+    test.afterAll(async ()=>{
+        for (const id of carsIdsToDelete) {
+            await client.cars.deleteCar(id)
+        }
+    })
 })
