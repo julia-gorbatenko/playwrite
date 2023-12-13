@@ -53,7 +53,6 @@ const config =  defineConfig({
     },
     trace: 'on-first-retry',
     launchOptions:{
-      // slowMo: 1000
     }
   },
 
