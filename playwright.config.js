@@ -35,7 +35,10 @@ const config =  defineConfig({
 //        },
 //       ],
 // ],
-  reporter: 'html',
+  reporter: [
+      ['html', {open: process.env.CI ? 'never' : 'on-failure'}],
+      [process.env.CI ? 'github' : 'list']
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     headless: true,
@@ -50,7 +53,7 @@ const config =  defineConfig({
     },
     trace: 'on-first-retry',
     launchOptions:{
-      slowMo: 1000
+      // slowMo: 1000
     }
   },
 

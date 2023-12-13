@@ -1,6 +1,8 @@
 import dotenv from 'dotenv'
 
-dotenv.config()
+dotenv.config({
+    path:  process.env.ENV ? `./.env.${process.env.ENV}` : './.env'
+})
 export const config = {
     baseURL: process.env.BASE_URL ?? "http://localhost",
     apiURL: process.env.API_URL ?? "http://localhost",
